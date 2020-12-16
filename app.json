@@ -2,13 +2,14 @@
   "expo": {
     "name": "Kolors",
     "slug": "Kolors",
-    "version": "1.0.0",
+    "privacy": "unlisted",
+    "version": "0.5.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon1024.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icon1024.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#470fe3"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,7 +18,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "com.angeeltrujillo.kolors",
+      "buildNumber": "0.5.0"
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -1,18 +1,30 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Pressable } from 'react-native';
+import { connect } from 'react-redux';
+import { toggleRoundTrip } from '../actions/TripActions'
+import { SetEndDate } from '../actions/TripActions'
 
 
-export default function tripSelector() {
+function RoundSelector (props) {
   const [isRound, setisRound] = useState(true);
+
   return (
     <View style={styles.container}>
         <Pressable style={isRound ? styles.toggleInactive : styles.toggleActive} onPress={ () => {
             setisRound(!isRound)
+            if (isRound == true) {
+                props.setEndDate(null)
+            }
+            props.toggleRoundTrip()
         }}>
             <Text style={isRound ? styles.textInactive : styles.textActive}>Sencillo</Text>
         </Pressable>
         <Pressable style={isRound ? styles.toggleActive : styles.toggleInactive} onPress={ () => {
             setisRound(!isRound)
+            if (isRound == true) {
+                props.setEndDate(null)
+            }
+            props.toggleRoundTrip()
         }}>
             <Text style={isRound ? styles.textActive : styles.textInactive}>Redondo</Text>
         </Pressable>
@@ -28,7 +40,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F6F0FE',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 10
     },
     toggleActive: {
         width: 100,
@@ -55,3 +68,16 @@ const styles = StyleSheet.create({
         fontSize: 16
     }
 });
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleRoundTrip: () => {
+            dispatch(toggleRoundTrip())
+        },
+        setEndDate: (date) => {
+            dispatch(SetEndDate(date))
+        }
+    }
+}
+
+export default connect(null, mapDispatchToProps)(RoundSelector)
